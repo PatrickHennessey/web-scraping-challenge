@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/bootstrap.css">
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1 class="display-4">Mission to Mars</h1>
+    <p class="lead">This is a simple site that scrapes data from several Mars related sources. Nothing too special</p>
+    <a class="btn btn-info btn-lg" href="/scrape" role="button">Get Fresh Data</a>
+    <!-- <hr class="my-4"> -->
+    <p class="news_top">Recent news about Mars</p>
+    <h4>{{ mars.news_title }}</h4>
+    <p>{{ mars.news_text }}</p>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="card bg-transparent text-white col-md-5 mb-3">
+        <img class="card-img" src="{{ mars.featured_img }}" alt="{{ mars.mars_hemi_imgs_title }}">
+        <div class="card-img-overlay">
+          <h5 class="card-title pl-2">Current Featured image from <a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars">Nasa</a> </h5>
+          <p class="card-text pl-2">{{ mars.featured_img_title }}.</p>
+        </div>
+      </div>
+      <div class="card border-primary col-md-5 offset-1">
+        <div class="card-body">
+          <h5 class="card-title">Mars Weather Reports</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Current Weather Conditions</h6>
+          <p class="card-text">{{ mars.mars_tweet }}</p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Mars Facts</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Did you know these facts about Mars?</h6>
+          <p class="card-text">{{ mars.mars_table | safe}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="card-body id=" image>
+        <div class="col-md-12">
+          <h3 align="center" id="font">Mars Hemisphere</h3>
+          <div class="row">
+            {% for hemi in mars_hemi_img_urls %}
+            <div class="col-md-3">
+              <img src="{{ hemi.url }}" class="img-thumbnail" alt="{{hemi.text}}">
+              </button>
+              <h6 class="card-text" align="center" id="font">{{ hem.text }}</h6>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div
+
+  </div> 
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
